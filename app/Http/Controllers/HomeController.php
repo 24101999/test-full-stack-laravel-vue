@@ -17,6 +17,7 @@ class HomeController extends Controller
 
     public function insert()
     {
+
         $cep = \filter_input(\INPUT_POST, 'cep');
         $estado = \filter_input(\INPUT_POST, 'estado');
         $cidade = \filter_input(\INPUT_POST, 'cidade');
@@ -62,6 +63,7 @@ class HomeController extends Controller
 
         $cep = \filter_input(\INPUT_POST, 'cep');
         $estado = \filter_input(\INPUT_POST, 'estado');
+        $estadoselect = '';
         $cidade = \filter_input(\INPUT_POST, 'cidade');
         $bairro = \filter_input(\INPUT_POST, 'bairro');
         $endereco = \filter_input(\INPUT_POST, 'endereco');
@@ -70,7 +72,7 @@ class HomeController extends Controller
         $emailContato = \filter_input(\INPUT_POST, 'emailcontato');
         $telefonecontato = \filter_input(\INPUT_POST, 'telefonecontato');
 
-        if ($cep || $estado || $cidade ||  $bairro || $endereco || $numero || $nomeContato ||  $emailContato ||  $telefonecontato) {
+        if ($cep and $estado and $cidade and  $bairro and $endereco and $numero and $nomeContato and  $emailContato and  $telefonecontato) {
             $up = DB::table('contatos')->where('id', $id)->update(['CEP' => $cep, 'estado' => $estado, 'cidade' => $cidade, 'bairro' => $bairro, 'endereco' => $endereco, 'numero' => $numero, 'nomeContato' => $nomeContato, 'emailContato' => $emailContato, 'telefoneContato' => $telefonecontato]);
         }
         if (empty($cep) || empty($estado) || empty($cidade) || empty($bairro) || empty($endereco) || empty($numero) || empty($nomeContato) || empty($emailContato) || empty($telefonecontato)) {

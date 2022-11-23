@@ -6,20 +6,43 @@
             <form action="{{route('up', [$update[0]->id])}}" method="POST">
                 @csrf
                 @method("put")
-                <input type="text" id="cep" onblur="pesquisacep(this.value);" name="cep" placeholder="{{$update[0]->CEP}}">
-                <input type="text" id="uf" name="estado" placeholder="{{$update[0]->estado}}">
-                <input type="text" id="cidade" name="cidade" placeholder="{{$update[0]->cidade}}">
-                <input type="text" id="bairro" name="bairro" placeholder="{{$update[0]->bairro}}">
-                <input type="text" id="rua" name="endereco" placeholder="{{$update[0]->endereco}}">
-                <input type="text" name="numero" placeholder="{{$update[0]->numero}}">
-                <input type="text" name="nomecontato" placeholder="{{$update[0]->nomeContato}}">
-                <input type="text" name="emailcontato" placeholder="{{$update[0]->emailContato}}">
-                <input type="text" name="telefonecontato" placeholder="{{$update[0]->telefoneContato}}">
-                <button class="button" name="button" type="submit">atualizar</button>
+                <input type="text" class="input" :class="inp" id="cep" onblur="pesquisacep(this.value);" name="cep" value="{{$update[0]->CEP}}">
+                <input type="text" class="input" :class="inp" id="uf" name="estado" value="{{$update[0]->estado}}">
+                <input type="text" class="input" :class="inp" id="cidade" name="cidade" value="{{$update[0]->cidade}}">
+                <input type="text" class="input" :class="inp" id="bairro" name="bairro" value="{{$update[0]->bairro}}">
+                <input type="text" class="input" :class="inp" id="rua" name="endereco" value="{{$update[0]->endereco}}">
+                <input type="text" class="input" :class="inp" name="numero" value="{{$update[0]->numero}}">
+                <input type="text" class="input" :class="inp" name="nomecontato" value="{{$update[0]->nomeContato}}">
+                <input type="text" class="input" :class="inp" name="emailcontato" value="{{$update[0]->emailContato}}">
+                <input type="text" class="input" :class="inp" name="telefonecontato" value="{{$update[0]->telefoneContato}}">
+                <button class="button" name="button" @@click="forminput()" type="submit">atualizar</button>
             </form>
         </div>
     </div>
 </div>
+
+<script type="module">
+
+import {createApp} from Vue
+
+createApp({
+data() {
+    return {
+        ok:'henrique'
+    }
+},
+
+methods: {
+    test(){
+        console.log(this.ok)
+    }
+},
+mounted() {
+    this.test()
+},
+}).mount('#api')
+
+</script>
 <script>
     
     function limpa_formulário_cep() {

@@ -15,16 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/api', [HomeController::class, 'index']);
-
 Route::get('/delete{id?}', [HomeController::class, 'delete']);
-// Route::get('/update{id?}', [HomeController::class, 'update']);
-// Route::post('/update{id?}', [HomeController::class, 'update']);
 Route::get('/update{id?}', [HomeController::class, 'update']);
 Route::get('/up{id?}', [HomeController::class, 'up']);
 Route::put('/up{id?}', [HomeController::class, 'up'])->name('up');
 Route::any('/cep', function () {
     return view('cep');
 });
-
-
 Route::any('/', [HomeController::class, 'insert']);

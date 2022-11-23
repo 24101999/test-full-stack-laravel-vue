@@ -10,20 +10,21 @@ form{
 <div id='app'>
     
     <div class="formulario" >
-        <div class="form" :class="op">
+        <div class="form" id="form" :class="op">
             <button @@click='fechar()'>FECHAR</button>
             <form method="POST">
                 @csrf
-            <input type="text" id="cep" name="cep" onblur="pesquisacep(this.value);" placeholder="CEP">
-            <input type="text" id="uf" name="estado" placeholder="Estado">
-            <input type="text" id="cidade" name="cidade" placeholder="Cidade">
-            <input type="text" id="bairro" name="bairro" placeholder="Bairro">
-            <input type="text" id="rua" name="endereco" placeholder="Endereço">
-            <input type="text" name="numero" placeholder="Numero">
-            <input type="text" name="nomecontato" placeholder="Nome do contato">
-            <input type="text" name="emailcontato" placeholder="E-mail docontato">
-            <input type="text" name="telefonecontato" placeholder="Telefone do contato">
-            <button type="submit">CADASTRAR</button>
+                    <input type="text" id="cep" name="cep" onblur="pesquisacep(this.value);" placeholder="CEP">
+                    <input type="text" id="uf" name="estado" placeholder="Estado">
+
+                    <input type="text" id="cidade" name="cidade" placeholder="Cidade">
+                    <input type="text" id="bairro" name="bairro" placeholder="Bairro">
+                    <input type="text" id="rua" name="endereco" placeholder="Endereço">
+                    <input type="text" name="numero" placeholder="Numero">
+                    <input type="text" name="nomecontato" placeholder="Nome do contato">
+                    <input type="text" name="emailcontato" placeholder="E-mail docontato">
+                    <input type="text" name="telefonecontato" placeholder="Telefone do contato">
+                    <button type="submit" class="button" id="buttonInsert">CADASTRAR</button>
             </form>
         </div>
     </div>
@@ -51,12 +52,16 @@ form{
     </div>
 </div>
 
+{{-- codigo vue --}}
 <script type="module">
+
+const input = document.querySelectorAll(".input")
+
+
     import {createApp} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
 createApp({
     data() {
         return {
-            ok:'henrique',
             dados:[],
             op:'',
             url:'http://127.0.0.1:8000/delete',
@@ -72,11 +77,11 @@ this.op = 'open'
         },
         get(){
 const th = this
-            axios.get('http://127.0.0.1:8000/api').then(function(res){
-                th.dados = res.data
-                console.log(th.dados)
-            })
-        }
+axios.get('http://127.0.0.1:8000/api').then(function(res){
+    th.dados = res.data
+    console.log(th.dados)
+})
+},
     },
     mounted() {
         // setInterval(this.get, 1000)
@@ -85,6 +90,10 @@ const th = this
 }).mount("#app")
 
 </script>
+
+{{-- codigo vue --}}
+
+{{-- api cep --}}
 <script>
     
     function limpa_formulário_cep() {
@@ -156,3 +165,4 @@ const th = this
     };
 
     </script>
+    {{-- api cep --}}
